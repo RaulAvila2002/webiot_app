@@ -4,8 +4,8 @@
 
     <side-bar
       :background-color="sidebarBackground"
-      short-title="GL"
-      title="IoTicos GL"
+      short-title="WebIOT"
+      title="WEB IoT"
     >
       <template slot-scope="props" slot="links">
         <sidebar-item
@@ -43,6 +43,7 @@
           }"
         >
         </sidebar-item>
+
       </template>
     </side-bar>
 
@@ -277,6 +278,7 @@ export default {
       this.client.on("message", (topic, message) => {
         console.log("Message from topic " + topic + " -> ");
         console.log(message.toString());
+        console.log(JSON.parse(message.toString()));
 
         try {
           const splittedTopic = topic.split("/");
@@ -295,6 +297,7 @@ export default {
             return;
           }
         } catch (error) {
+
           console.log(error);
         }
       });

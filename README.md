@@ -13,7 +13,7 @@ El mismo fue desarrollado en el curso IoT Bootcamp God Level.
 
 ### Puedes acceder a la demo aquí:
 
-[](https://demo.ioticos.org)
+[](https://demo.webiot.com.ar)
 
 ![IOTICOS%20GL%20APP%203aecd292ad5447b9aff5744b6608d234/Snip20210311_8.png](IOTICOS%20GL%20APP%203aecd292ad5447b9aff5744b6608d234/Snip20210311_8.png)
 

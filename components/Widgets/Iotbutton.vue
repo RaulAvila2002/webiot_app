@@ -1,9 +1,10 @@
 <template>
   <card>
+
     <div slot="header">
-      <h4 class="card-title">
+      <h5 class="card-title">
         {{ config.selectedDevice.name }} - {{ config.variableFullName }}
-      </h4>
+      </h5>
     </div>
 
     <i
@@ -12,7 +13,7 @@
       style="font-size: 30px"
     ></i>
 
-    <base-button  @click="sendValue()" :type="config.class" class="mb-3 pull-right" size="lg">{{config.text}}</base-button>
+    <base-button  @click="sendValue()" :type="config.class" class="mb-3 pull-right" size="sm">{{config.text}}</base-button>
 
   </card>
 </template>

@@ -1,22 +1,11 @@
 <template>
-
-    <card>
-
-        <template slot="header">
-           
-            <h5 class="card-category"> {{ config.selectedDevice.name }} - {{ config.variableFullName }}</h5>
-
-            <h3 class="card-title">
-                <i class="fa " :class="[config.icon, getIconColorClass()]" aria-hidden="true"
-                    style="font-size: 30px;"></i>
-                <base-switch @click="value = !value; sendValue()" :value="value" type="primary" on-text="ON" off-text="OFF" style="margin-top: 10px;" class="pull-right">
-                </base-switch>
-
-            </h3>
-
-        </template>
-
-    </card>
+<card>
+    <div slot="header">
+        <h5 class="card-title"> {{ config.selectedDevice.name }} - {{ config.variableFullName }}</h5>
+    </div>
+    <i class="fa " :class="[config.icon, getIconColorClass()]" aria-hidden="true" style="font-size: 30px;"></i>
+    <base-switch @click="value = !value; sendValue()" :value="value" type="primary" on-text="ON" off-text="OFF" class="pull-right"></base-switch>
+</card>
 
 </template>
 
@@ -28,7 +17,8 @@
         
         data() {
             return {
-                value: true
+                value: true,
+                sending: false
             };
         },
         watch: {
@@ -74,13 +64,21 @@
 
             sendValue(){
 
+                this.sending = true;
+                setTimeout(() => {
+                this.sending = false;
+                }, 500);
+
+                var aux = (!this.value)?this.config.messageOn:this.config.messageOff; 
+                                
                 const toSend = {
                     topic: this.config.userId + '/' + this.config.selectedDevice.dId + '/' + this.config.variable + '/actdata',
-                    msg: {
-                        value: this.value
+                    msg: {                 
+                        value: aux
                     }
                 };
 
+               // console.log(toSend);
                 $nuxt.$emit('mqtt-sender', toSend);
 
             }

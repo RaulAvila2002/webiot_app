@@ -31,7 +31,7 @@
 
 <script>
     export default {
-        name: 'rtnumberchart',
+        name: 'gaguge',
         props: ['config'],
         data() {
             return {
@@ -47,8 +47,8 @@
                         enabled: false
                     },
                     chart: {
+                        type: 'solidgauge',
                         renderTo: 'container',
-                        defaultSeriesType: 'spline',
                         backgroundColor: 'rgba(0,0,0,0)',
                     },
                     title: {
@@ -129,7 +129,6 @@
 
 
                         this.chartOptions.series[0].name = this.config.variableFullName + " " + this.config.unit;
-                        this.updateColorClass();
                         window.dispatchEvent(new Event('resize'));
                     }, 300);
                 }
@@ -138,35 +137,12 @@
         mounted() {
 
             this.getNow();
-            this.updateColorClass();
 
         },
         beforeDestroy() {
             this.$nuxt.$off(this.topic + "/sdata");
         },
         methods: {
-
-            updateColorClass() {
-                console.log("update" + this.config.class)
-
-                var c = this.config.class;
-
-                if (c == "success") {
-                    this.chartOptions.series[0].color = "#00f2c3";
-                }
-                if (c == "primary") {
-                    this.chartOptions.series[0].color = "#e14eca";
-                }
-                if (c == "warning") {
-                    this.chartOptions.series[0].color = "#ff8d72";
-                }
-                if (c == "danger") {
-                    this.chartOptions.series[0].color = "#fd5d93";
-                }
-
-                this.chartOptions.series[0].name = this.config.variableFullName + " " + this.config.unit;
-
-            },
 
             getChartData() {
 
@@ -196,8 +172,8 @@
 
                             aux.push(element.time + (new Date().getTimezoneOffset() * 60 * 1000 * -1));
                             aux.push(element.value);
-
-                            this.chartOptions.series[0].data.push(aux);
+                           
+                            //this.gaugeOptions.series[0].data.push(aux);
                         });
 
                         this.isMounted = true;

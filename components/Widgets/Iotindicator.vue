@@ -1,16 +1,17 @@
 <template>
   <card>
-    <div slot="header">
-      <h4 class="card-title">
-        {{ config.selectedDevice.name }} - {{ config.variableFullName }}
-      </h4>
-    </div>
 
+    <div slot="header">
+      <h5 class="card-title">
+        {{ config.selectedDevice.name }} - {{ config.variableFullName }}
+      </h5>
+    </div>
     <i
       class="fa "
       :class="[config.icon, getIconColorClass()]"
       style="font-size: 30px"
     ></i>
+    
   </card>
 </template>
 
