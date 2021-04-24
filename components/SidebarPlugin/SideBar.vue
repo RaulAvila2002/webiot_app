@@ -3,7 +3,7 @@
     <div class="sidebar-wrapper" ref="sidebarScrollArea">
       <div class="logo">
         <a href="https://webiot.com.ar" class="simple-text logo-mini">
-          <img src="https://yt3.ggpht.com/ytc/AAUvwnjakiyR7urXlB0hxyXjpyXZI2k4eFlahDd5vfgDEQ=s900-c-k-c0x00ffffff-no-rj" alt="app-logo" />
+          <i class="fa fa-user-circle-o" ></i>
         </a>
         <a href="https://webiot.com.ar" class="simple-text logo-normal">
           {{ title }}
