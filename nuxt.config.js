@@ -2,6 +2,7 @@ export default {
   ssr: false,
   /*
   ** Headers of the page
+  /* comentario
   */
   head: {
     title: 'Web IoT',
