@@ -99,7 +99,7 @@
                   class="fas fa-database "
                   :class="{
                     'text-success': row.saverRule.status,
-                    'text-dark': !row.saverRule.status
+                    'text-light': !row.saverRule.status
                   }"
                 ></i>
               </el-tooltip>
@@ -135,7 +135,7 @@
         </el-table>
       </card>
     </div>
-  </div>
+     </div>
 </template>
 
 <script>

@@ -1,8 +1,8 @@
 {
-  "name": "iot_gl_app",
+  "name": "webiot_app",
   "version": "1.0.0",
-  "description": "IOT_GL_APP",
-  "author": "IoTicos.org",
+  "description": "WEBIOT_APP",
+  "author": "webiot.com.ar",
   "scripts": {
     "dev": "nuxt",
     "devn": "nodemon api/index.js --exec babel-node",

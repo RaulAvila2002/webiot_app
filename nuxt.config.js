@@ -4,7 +4,7 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: 'IoT GL',
+    title: 'Web IoT',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -62,12 +62,12 @@ export default {
   env:{
    mqtt_prefix: process.env.MQTT_PREFIX,
    mqtt_host: process.env.MQTT_HOST,
-   mqtt_port: process.env.MQTT_PORT
+   mqtt_port: process.env.MQTT_PORT,
   },
 
   server: {
     port: 3000, // default: 3000
-    host: '0.0.0.0', // default: localhost
+    host: process.env.SERVER_HOST, // default: localhost
   },
 
   serverMiddleware: {

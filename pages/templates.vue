@@ -675,6 +675,7 @@
               prop="widgets.length"
               label="Widgets"
             ></el-table-column>
+            
 
             <el-table-column header-align="right" align="right" label="Actions">
               <div
@@ -695,6 +696,22 @@
                     class="btn-link"
                   >
                     <i class="tim-icons icon-simple-remove "></i>
+                  </base-button>
+                </el-tooltip>
+                                <el-tooltip
+                  content="Edit"
+                  effect="light"
+                  :open-delay="300"
+                  placement="top"
+                >
+                  <base-button
+                    @click="editTemplate(row)"
+                    type="danger"
+                    icon
+                    size="sm"
+                    class="btn-link"
+                  >
+                    <i class="tim-icons icon-pencil "></i>
                   </base-button>
                 </el-tooltip>
               </div>
@@ -877,6 +894,10 @@ export default {
       }
     },
 
+// Edit Template
+async editTemplate() {
+
+},
     //Delete Template
     async deleteTemplate(template) {
 
