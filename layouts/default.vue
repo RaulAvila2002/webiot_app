@@ -125,8 +125,7 @@ export default {
   },
   computed: {
     isFullScreenRoute() {
-      return this.$route.path === "/maps/full-screen";
-    }
+      return this.$route.path === "/maps/full-screen";}
   },
   mounted() {
     this.$store.dispatch("getNotifications");
