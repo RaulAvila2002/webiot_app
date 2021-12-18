@@ -81,7 +81,7 @@ router.post("/getdevicecredentials", async (req, res) => {
 //SAVER WEBHOOK
 router.post("/saver-webhook", async (req, res) => {
   try {
-    if (req.headers.token != process.env.EMQX_API_TOKEN) {
+    if (req.headers.token != process.env.WEBHOOK_TOKEN) {
       res.status(404).json();
       return;
     }
@@ -115,7 +115,7 @@ router.post("/saver-webhook", async (req, res) => {
 //ALARMS WEBHOOK
 router.post("/alarm-webhook", async (req, res) => {
   try {
-    if (req.headers.token != process.env.EMQX_API_TOKEN) {
+    if (req.headers.token != process.env.WEBHOOK_TOKEN) {
       res.status(404).json();
       return;
     }

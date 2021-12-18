@@ -4,8 +4,8 @@
 
     <side-bar
       :background-color="sidebarBackground"
-      short-title="GL"
-      title="IoTicos GL"
+      short-title="WebIOT"
+      title="WEB IoT"
     >
       <template slot-scope="props" slot="links">
         <sidebar-item
@@ -43,11 +43,12 @@
           }"
         >
         </sidebar-item>
+
       </template>
     </side-bar>
 
     <!--Share plugin (for demo purposes). You can remove it if don't plan on using it-->
-    <sidebar-share :background-color.sync="sidebarBackground"> </sidebar-share>
+
 
     <div class="main-panel" :data="sidebarBackground">
       <dashboard-navbar></dashboard-navbar>
@@ -101,7 +102,7 @@ export default {
   },
   data() {
     return {
-      sidebarBackground: "primary", //vue|blue|orange|green|red|primary
+      sidebarBackground: "vue", //vue|blue|orange|green|red|primary
       client: null,
       options: {
         host: process.env.mqtt_host,
@@ -276,6 +277,7 @@ export default {
       this.client.on("message", (topic, message) => {
         console.log("Message from topic " + topic + " -> ");
         console.log(message.toString());
+        console.log(JSON.parse(message.toString()));
 
         try {
           const splittedTopic = topic.split("/");
@@ -294,6 +296,7 @@ export default {
             return;
           }
         } catch (error) {
+
           console.log(error);
         }
       });

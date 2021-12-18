@@ -197,9 +197,19 @@
                 label="Icon"
                 type="text"
               ></base-input>
-
-              <br />
-
+              <base-input
+                v-model="iotSwitchConfig.messageOn"
+                label="On Message"
+                type="text"
+              >
+              </base-input>          
+              <base-input
+                v-model="iotSwitchConfig.messageOff"
+                label="Off Message"
+                type="text"
+              >
+              </base-input>
+              <br />              
               <el-select
                 v-model="iotSwitchConfig.class"
                 class="select-success"
@@ -756,12 +766,12 @@ export default {
         variable: "varname",
         variableType: "input",
         variableSendFreq: "30",
-        unit: "Watts",
+        unit: "°C",
         class: "success",
         column: "col-12",
         decimalPlaces: 2,
         widget: "numberchart",
-        icon: "fa-sun",
+        icon: "fa-thermometer-half",
         chartTimeAgo: 60,
         demo: true
       },
@@ -777,8 +787,10 @@ export default {
         variableType: "output",
         class: "danger",
         widget: "switch",
-        icon: "fa-bath",
-        column: "col-6"
+        icon: "fa-lightbulb",
+        column: "col-6",
+        messageOn: "true",
+        messageOff: "false"
       },
 
 
@@ -794,7 +806,7 @@ export default {
         variableSendFreq: "30",
         class: "success",
         widget: "indicator",
-        icon: "fa-bath",
+        icon: "fa-lightbulb",
         column: "col-6"
       },
 
