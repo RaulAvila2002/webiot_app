@@ -1,7 +1,7 @@
 <template>
     
     <div>
-        Ready!
+        Ready For ALL!
     </div>
 
 </template>
