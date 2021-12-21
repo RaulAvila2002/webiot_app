@@ -19,6 +19,12 @@
             >
               <el-option
                 class="text-dark"
+                value="number"
+                label="Number INPUT <-"
+              >
+              </el-option>
+              <el-option
+                class="text-dark"
                 value="numberchart"
                 label="Number Chart INPUT <-"
               >
