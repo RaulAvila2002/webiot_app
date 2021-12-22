@@ -19,7 +19,7 @@
             >
               <el-option
                 class="text-dark"
-                value="number"
+                value="rtnumber"
                 label="Number INPUT <-"
               >
               </el-option>
@@ -54,6 +54,132 @@
 
             <br />
             <br />
+
+            <!-- FORMS NUMBER TYPE -->
+            <div v-if="widgetType == 'rtnumber'">
+              <base-input
+                v-model="nConfig.variableFullName"
+                label="Var Name"
+                type="text"
+              >
+              </base-input>
+
+              <base-input v-model="nConfig.unit" label="Unit" type="text">
+              </base-input>
+
+              <base-input
+                v-model.number="nConfig.decimalPlaces"
+                label="Decimal Places"
+                type="number"
+              >
+              </base-input>
+
+              <base-input
+                v-model="nConfig.icon"
+                label="Icon"
+                type="text"
+              ></base-input>
+
+              <br />
+
+              <base-input
+                v-model.number="nConfig.variableSendFreq"
+                label="Send Freq"
+                type="number"
+              ></base-input>
+
+              <br />
+
+              <el-select
+                v-model="nConfig.class"
+                class="select-success"
+                placeholder="Select Class"
+                style="width: 100%;"
+              >
+                <el-option
+                  class="text-success"
+                  value="success"
+                  label="Success"
+                ></el-option>
+                <el-option
+                  class="text-primary"
+                  value="primary"
+                  label="Primary"
+                ></el-option>
+                <el-option
+                  class="text-warning"
+                  value="warning"
+                  label="Warning"
+                ></el-option>
+                <el-option
+                  class="text-danger"
+                  value="danger"
+                  label="Danger"
+                ></el-option>
+              </el-select>
+
+              <br /><br /><br />
+
+              <el-select
+                v-model="nConfig.column"
+                class="select-success"
+                placeholder="Select Column Width"
+                style="width: 100%;"
+              >
+                <el-option
+                  class="text-dark"
+                  value="col-3"
+                  label="col-3"
+                ></el-option>
+                <el-option
+                  class="text-dark"
+                  value="col-4"
+                  label="col-4"
+                ></el-option>
+                <el-option
+                  class="text-dark"
+                  value="col-5"
+                  label="col-5"
+                ></el-option>
+                <el-option
+                  class="text-dark"
+                  value="col-6"
+                  label="col-6"
+                ></el-option>
+                <el-option
+                  class="text-dark"
+                  value="col-7"
+                  label="col-7"
+                ></el-option>
+                <el-option
+                  class="text-dark"
+                  value="col-8"
+                  label="col-8"
+                ></el-option>
+                <el-option
+                  class="text-dark"
+                  value="col-9"
+                  label="col-9"
+                ></el-option>
+                <el-option
+                  class="text-dark"
+                  value="col-10"
+                  label="col-10"
+                ></el-option>
+                <el-option
+                  class="text-dark"
+                  value="col-11"
+                  label="col-11"
+                ></el-option>
+                <el-option
+                  class="text-dark"
+                  value="col-12"
+                  label="col-12"
+                ></el-option>
+              </el-select>
+
+              <br /><br />
+            </div>
 
             <!-- FORMS NUMBER CHART TYPE -->
             <div v-if="widgetType == 'numberchart'">
@@ -549,6 +675,11 @@
 
           <!-- WIDGET PREVIEW -->
           <div class="col-6">
+            <Rtnumber
+              v-if="widgetType == 'rtnumber'"
+              :config="nConfig"
+            ></Rtnumber>
+
             <Rtnumberchart
               v-if="widgetType == 'numberchart'"
               :config="ncConfig"
@@ -598,6 +729,11 @@
           @click="deleteWidget(index)"
           style="margin-bottom: 10px;"
         ></i>
+
+        <Rtnumber
+          v-if="widget.widget == 'rtnumber'"
+          :config="widget"
+        ></Rtnumber>
 
         <Rtnumberchart
           v-if="widget.widget == 'numberchart'"
@@ -761,6 +897,23 @@ export default {
       templateName: "",
       templateDescription: "",
 
+      nConfig: {
+        userId: "sampleuserid",
+        selectedDevice: {
+          name: "Home",
+          dId: "8888"
+        },
+        variableFullName: "temperature",
+        variable: "varname",
+        variableType: "input",
+        variableSendFreq: "30",
+        unit: "°C",
+        class: "success",
+        column: "col-12",
+        decimalPlaces: 2,
+        widget: "rtnumber",
+        icon: "fa-thermometer-half",
+      },
 
       ncConfig: {
         userId: "sampleuserid",
@@ -970,6 +1123,11 @@ async editTemplate() {
 
     //Add Widget
     addNewWidget() {
+
+      if (this.widgetType == "rtnumber") {
+        this.nConfig.variable = this.makeid(10);
+        this.widgets.push(JSON.parse(JSON.stringify(this.nConfig)));
+      }      
       if (this.widgetType == "numberchart") {
         this.ncConfig.variable = this.makeid(10);
         this.widgets.push(JSON.parse(JSON.stringify(this.ncConfig)));
