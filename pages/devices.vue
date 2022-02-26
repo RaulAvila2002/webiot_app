@@ -159,7 +159,8 @@ export default {
         dId: "",
         templateId: "",
         templateName: ""
-      }
+      },
+      status:""
     };
   },
   mounted() {
